@@ -1,0 +1,24 @@
+<form style="width: 350px" class="m-auto mt-5">
+    <h1 class="h3 mb-3 text-center">Cadastro</h1>
+    <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="nome" placeholder="Seu nome">
+        <label for="nome">Nome</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="senha" placeholder="nome@exemplo.com">
+        <label for="senha">E-mail</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="senha" placeholder="Senha">
+        <label for="senha">Senha</label>
+    </div>
+    <div class="form-floating mb-3">
+        <input type="password" class="form-control" id="confirmaSenha" placeholder="Confirma senha">
+        <label for="confirmaSenha">Confirma senha</label>
+    </div>
+    <button class="btn btn-primary w-100 py-2 fw-bold" type="submit">Cadastrar</button>
+</form>
+
+<div class="text-center mt-3">
+    <a [routerLink]="['/auth/login']" class="mx-auto">Já possui conta?</a>
+</div>
