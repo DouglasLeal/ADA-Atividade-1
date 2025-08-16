@@ -1,0 +1,9 @@
+<div class="card">
+    <img [src]="product.images[0]" class="card-img-top border-bottom" [alt]="product.title">
+
+
+    <div class="card-body">
+        <h2 class="fs-3 text-center">{{product.title}}</h2>
+        <p class="card-text text-center fs-2">{{product.price | currency}}</p>
+    </div>
+</div>
