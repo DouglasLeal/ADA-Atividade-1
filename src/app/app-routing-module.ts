@@ -4,12 +4,17 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'produtos',
+    redirectTo: 'auth',
     pathMatch: 'full'
   },
   { 
     path: 'produtos',
     loadChildren: () => import('./modules/products/products-module').then(m => m.ProductsModule)
+  },
+  { 
+    path: 'auth',
+    loadChildren: () => import('./modules/auth/auth-module').then(m => m.AuthModule)
+
   }
 ];
 
