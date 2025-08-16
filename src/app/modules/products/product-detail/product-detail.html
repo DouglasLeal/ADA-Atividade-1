@@ -1,0 +1,9 @@
+<h1 class="text-center">{{ product?.title }}</h1>
+
+<div class="text-center">
+    <img class="img-thumbnail border-3 text-center" style="width: 500px" [src]="product?.images" [alt]="product?.title">
+</div>
+
+<p class="text-center fs-1 fw-bold">{{ product?.price | currency }}</p>
+
+<p class="text-center">{{ product?.description }}</p>
