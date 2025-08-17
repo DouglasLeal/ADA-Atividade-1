@@ -19,4 +19,9 @@ export class Cart implements OnInit {
       this.cartItens = result;
     })
   }
+
+  getTotal(){
+    return this.cartItens.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
+  }
 }

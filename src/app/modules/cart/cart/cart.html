@@ -1,11 +1,39 @@
-<h1>Carrinho</h1>
+<h1 class="mb-5 alert alert-light d-flex justify-content-between align-items-center">
+    <span>Carrinho</span>
+    <i class="fa-solid fa-cart-shopping"></i>
+</h1>
+
+@if(cartItens.length === 0){
+<p class="alert alert-info">Seu carrinho está vazio</p>
+}@else {
+<table class="table table-striped">
+    <thead>
+        <tr class="text-center">
+            <th></th>
+            <th>Produto</th>
+            <th>Quantidade</th>
+            <th>Valor</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (item of cartItens; track $index) {
+        <tr class="text-center align-middle">
+            <td style="width: 150px"><img [src]="item.image" class="img-fluid"></td>
+            <td>{{item.title}}</td>
+            <td>
+                {{item.quantity}}
+            </td>
+            <td>{{item.price * item.quantity | currency}}</td>
+        </tr>
+        }
+    </tbody>
+</table>
 
 <ul class="list-group">
-    @for (item of cartItens; track $index) {
-        <li class="list-group-item">
-            {{item.title}} | 
-            {{item.price * item.quantity | currency}} |
-            Quantidade: {{item.quantity}}
-        </li>
-    }    
+    <li class="list-group-item ms-auto text-primary fw-bold">
+        Total: {{getTotal() | currency}}
+    </li>
 </ul>
+
+<button class="btn btn-warning d-block w-100 mt-5 fw-bold">Finalizar Compra</button>
+}
