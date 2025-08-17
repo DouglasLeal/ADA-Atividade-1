@@ -1,13 +1,43 @@
-<h1 class="text-center">{{ product?.title }}</h1>
+@if(loadingProduct){
+<app-loading></app-loading>
+}@else {
+<div class="card">
+    <div class="card-body">
+        <h1 class="text-center">{{ product?.title }}</h1>
 
-<div class="text-center">
-    <img class="img-thumbnail border-3 text-center" style="width: 500px" [src]="product?.images" [alt]="product?.title">
+        @if(product?.images?.length! > 1){
+        <div id="carouselProduct" class="carousel slide bg-secondary">
+            <div class="carousel-inner mx-auto w-50 text-center">
+
+                @for(image of product?.images; track image; let i = $index){
+                <div class="carousel-item" [class.active]="i === 0">
+                    <img [src]="image" class="d-block w-100" alt="...">
+                </div>
+                }
+            </div>
+            <button class="carousel-control-prev bg-dark" type="button" data-bs-target="#carouselProduct" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next bg-dark" type="button" data-bs-target="#carouselProduct" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        }@else {
+        <div class="text-center">
+            <img class="img-thumbnail border-3 text-center" style="width: 500px" [src]="product?.images"
+                [alt]="product?.title">
+        </div>
+        }
+
+        <p class="text-center fs-1 fw-bold">{{ product?.price | currency }}</p>
+
+        <p class="text-center">{{ product?.description }}</p>
+
+        <div class="text-center">
+            <button type="button" class="btn btn-primary" (click)="addItem()">Adicionar ao Carrinho</button>
+        </div>
+    </div>
 </div>
-
-<p class="text-center fs-1 fw-bold">{{ product?.price | currency }}</p>
-
-<p class="text-center">{{ product?.description }}</p>
-
-<div class="text-center">
-    <button type="button" class="btn btn-primary" (click)="addItem()">Adicionar ao Carrinho</button>
-</div>
+}

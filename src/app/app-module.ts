@@ -15,7 +15,7 @@ registerLocaleData(ptBr);
 @NgModule({
   declarations: [
     App,
-    Navbar
+    Navbar,
   ],
   imports: [
     BrowserModule,

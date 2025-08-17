@@ -14,6 +14,7 @@ export class ProductDetail implements OnInit {
 
   private productId: number | null = null;
   public product: Product | null = null;
+  public loadingProduct: boolean = false;
 
   constructor(
     private route: ActivatedRoute, 
@@ -23,11 +24,13 @@ export class ProductDetail implements OnInit {
 
   ngOnInit(): void {
     this.productId = Number(this.route.snapshot.paramMap.get('id'));
+    this.loadingProduct = true;
 
     if (this.productId) {
       this.productService.getById(this.productId).subscribe(product => {
-
+        console.log(product)
         this.product = product;
+        this.loadingProduct = false;
       });
     }
   }

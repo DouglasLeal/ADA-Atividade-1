@@ -6,7 +6,7 @@ import { ProductService } from '../../../services/product-service';
   selector: 'app-product-list',
   standalone: false,
   templateUrl: './product-list.html',
-  styleUrl: './product-list.scss'
+  styleUrl: './product-list.scss',
 })
 export class ProductList implements OnInit {
   public products: Product[] = [];

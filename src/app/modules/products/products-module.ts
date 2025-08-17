@@ -5,6 +5,7 @@ import { ProductsRoutingModule } from './products-routing-module';
 import { ProductList } from './product-list/product-list';
 import { ProductListItem } from './product-list-item/product-list-item';
 import { ProductDetail } from './product-detail/product-detail';
+import { Loading } from '../../components/loading/loading';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ProductDetail } from './product-detail/product-detail';
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule
+    ProductsRoutingModule,
+    Loading
   ]
 })
 export class ProductsModule { }
