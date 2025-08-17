@@ -1,5 +1,14 @@
+@if (loadingProducts) {
+<div class="text-center">
+  <p class="text-light fs-1">Carregando...</p>
+  <div class="spinner-border text-light fs-1" style="width: 100px; height: 100px;" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+} @else {
 <div class="row">
   @for (product of products; track $index) {
-    <app-product-list-item class="col-sm-12 col-lg-6 col-xl-4 mb-3" [product]="product"></app-product-list-item>
+  <app-product-list-item class="col-sm-12 col-lg-6 col-xl-4 mb-3" [product]="product"></app-product-list-item>
   }
 </div>
+}

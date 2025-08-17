@@ -1,0 +1,12 @@
+a{
+    text-decoration: none;
+    
+    &:hover{
+        h2, p{
+            color: #007bff;
+        }
+        .card{
+            border-color: #007bff;
+        }
+    }
+}
