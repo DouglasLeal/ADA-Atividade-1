@@ -1,0 +1,11 @@
+<h1>Carrinho</h1>
+
+<ul class="list-group">
+    @for (item of cartItens; track $index) {
+        <li class="list-group-item">
+            {{item.title}} | 
+            {{item.price * item.quantity | currency}} |
+            Quantidade: {{item.quantity}}
+        </li>
+    }    
+</ul>

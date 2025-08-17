@@ -7,13 +7,15 @@ import { DEFAULT_CURRENCY_CODE, LOCALE_ID } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
+import { Navbar } from './components/navbar/navbar';
 
 
 registerLocaleData(ptBr);
 
 @NgModule({
   declarations: [
-    App
+    App,
+    Navbar
   ],
   imports: [
     BrowserModule,

@@ -4,12 +4,16 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'auth',
+    redirectTo: 'produtos',
     pathMatch: 'full'
   },
   { 
     path: 'produtos',
     loadChildren: () => import('./modules/products/products-module').then(m => m.ProductsModule)
+  },
+  {
+    path: 'checkout',
+    loadChildren: () => import('./modules/cart/cart-module').then(m => m.CartModule)
   },
   { 
     path: 'auth',
