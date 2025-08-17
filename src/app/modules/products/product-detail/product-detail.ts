@@ -28,7 +28,6 @@ export class ProductDetail implements OnInit {
 
     if (this.productId) {
       this.productService.getById(this.productId).subscribe(product => {
-        console.log(product)
         this.product = product;
         this.loadingProduct = false;
       });
