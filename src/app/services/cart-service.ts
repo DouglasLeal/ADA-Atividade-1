@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Product } from '../types/product';
 import { CartItem } from '../types/cart-item';
+import { LocalStorageUtil } from '../utils/local-storage-util';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,17 @@ export class CartService {
   cartItens$ = this.cartItens.asObservable();
 
   constructor(){}
+
+  getCartItensFromLocalStorage(){
+    this.cartItens.next(LocalStorageUtil.getCartItens());
+    
+    let itens = this.cartItens.value;
+    let count = 0;
+    itens.forEach(item => {
+      count += item.quantity;
+    })
+    this.itemCount.next(count);
+  }
 
   addItem(product: Product | CartItem){
     this.itemCount.next(this.itemCount.value + 1);
@@ -40,6 +52,7 @@ export class CartService {
     }
 
     this.cartItens.next([...this.cartItens.value]);
+    LocalStorageUtil.setCartItens(this.cartItens.value);
   }
 
   removeItem(item: CartItem){
@@ -59,10 +72,12 @@ export class CartService {
       }
     }
 
+    LocalStorageUtil.setCartItens(this.cartItens.value);
   }
 
   clearCart(){
     this.itemCount.next(0);
     this.cartItens.next([]);
+    LocalStorageUtil.clearCartItens();
   }
 }

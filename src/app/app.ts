@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './services/auth-service';
 import { User } from './types/user';
 import {LocalStorageUtil} from './utils/local-storage-util';
+import { CartService } from './services/cart-service';
 
 @Component({
   selector: 'app-root',
@@ -13,10 +14,12 @@ export class App implements OnInit {
   
   loggedUser: User | null = null; 
 
-  constructor(private authService: AuthService){}
+  constructor(private authService: AuthService, 
+    private cartService: CartService){}
 
   ngOnInit(): void {
     this.verifyTestAccountExists();
+    this.loadCardItensFromLocalStorage();
   }
 
   private verifyTestAccountExists(){
@@ -41,5 +44,9 @@ export class App implements OnInit {
     };
 
     this.authService.registerUser(user);
+  }
+
+  private loadCardItensFromLocalStorage(){
+    this.cartService.getCartItensFromLocalStorage();
   }
 }
