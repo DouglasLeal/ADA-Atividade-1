@@ -1,4 +1,3 @@
-
 <p class="alert alert-success text-center" *ngIf="isSuccess">Usuário cadastrado com sucesso.</p>
 
 <div class="card mx-auto" style="width: 400px">
@@ -7,41 +6,79 @@
             <h1 class="mb-3 text-center">Cadastro</h1>
             <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="nome" placeholder="Seu nome" formControlName="name">
-                <label for="nome">Nome</label>
+                <label for="nome">Nome *</label>
             </div>
-            <div class="text-danger mb-3" *ngIf="registerForm!.get('name')?.touched && registerForm!.get('name')?.invalid">
+            <div class="text-danger mb-3"
+                *ngIf="registerForm!.get('name')?.touched && registerForm!.get('name')?.invalid">
                 O nome é obrigatório (mínimo 3 caracteres).
             </div>
 
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com" formControlName="email">
-                <label for="email">E-mail</label>
+                <input type="email" class="form-control" id="email" placeholder="nome@exemplo.com"
+                    formControlName="email">
+                <label for="email">E-mail *</label>
             </div>
-            <div class="text-danger mb-3" *ngIf="registerForm!.get('email')?.touched && registerForm!.get('email')?.invalid">
+            <div class="text-danger mb-3"
+                *ngIf="registerForm!.get('email')?.touched && registerForm!.get('email')?.invalid">
                 Insira um e-mail válido.
             </div>
 
             <div class="form-floating mb-3">
                 <input type="password" class="form-control" id="senha" placeholder="Senha" formControlName="password">
-                <label for="senha">Senha</label>
+                <label for="senha">Senha *</label>
             </div>
-            <div class="text-danger mb-3" *ngIf="registerForm!.get('password')?.touched && registerForm!.get('password')?.invalid">
+            <div class="text-danger mb-3"
+                *ngIf="registerForm!.get('password')?.touched && registerForm!.get('password')?.invalid">
                 A senha deve ter no mínimo 6 caracteres.
             </div>
 
             <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="confirmaSenha" placeholder="Confirma senha" formControlName="confirmPassword">
-                <label for="confirmaSenha">Confirma senha</label>
+                <input type="password" class="form-control" id="confirmaSenha" placeholder="Confirma senha"
+                    formControlName="confirmPassword">
+                <label for="confirmaSenha">Confirma senha *</label>
             </div>
-            <div class="text-danger mb-3" *ngIf="registerForm!.get('confirmPassword')?.touched && registerForm!.get('confirmPassword')?.invalid">
+            <div class="text-danger mb-3"
+                *ngIf="registerForm!.get('confirmPassword')?.touched && registerForm!.get('confirmPassword')?.invalid">
                 As senhas não coincidem.
             </div>
 
             <hr>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="address" placeholder="Endereço" formControlName="address">
 
-                <label for="address">Endereço</label>
+            <div formGroupName="address">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="street" placeholder="Rua"
+                        formControlName="street">
+
+                    <label for="street">Rua</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="number" placeholder="Número"
+                        formControlName="number">
+
+                    <label for="number">Número</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="city" placeholder="Cidade"
+                        formControlName="city">
+
+                    <label for="city">Cidade</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="state" placeholder="Estado"
+                        formControlName="state">
+
+                    <label for="state">Estado</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="zip" placeholder="CEP"
+                        formControlName="zip">
+
+                    <label for="zip">CEP</label>
+                </div>
             </div>
 
             <button class="btn btn-primary w-100 py-2 fw-bold" type="submit">Cadastrar</button>

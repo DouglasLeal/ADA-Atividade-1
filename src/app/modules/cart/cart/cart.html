@@ -21,7 +21,10 @@
             <td style="width: 150px"><img [src]="item.image" class="img-fluid"></td>
             <td>{{item.title}}</td>
             <td>
+                <button (click)="removeItem(item)">-</button>
                 {{item.quantity}}
+                <button (click)="addItem(item)">+</button>
+
             </td>
             <td>{{item.price * item.quantity | currency}}</td>
         </tr>

@@ -1,1 +1,91 @@
-<p>checkout works!</p>
+<a [routerLink]="['/checkout/carrinho']" class="btn btn-dark mb-2">Voltar</a>
+
+<div class="row">
+    <div class="col-sm-12 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Dados da Entrega</h5>
+
+                <div class="form-floating my-3">
+                    <input type="text" class="form-control" id="nome" placeholder="Nome" name="nome"
+                        [(ngModel)]="user!.name">
+                    <label for="senha">Nome</label>
+                </div>
+                <div class="form-floating my-3">
+                    <input type="text" class="form-control" id="numero" placeholder="Número" name="numero"
+                        [(ngModel)]="user!.address.number">
+                    <label for="senha">Número</label>
+                </div>
+                <div class="form-floating my-3">
+                    <input type="text" class="form-control" id="cidade" placeholder="Cidade" name="cidade"
+                        [(ngModel)]="user!.address.city">
+                    <label for="senha">Cidade</label>
+                </div>
+                <div class="form-floating my-3">
+                    <input type="text" class="form-control" id="estado" placeholder="Estado" name="estado"
+                        [(ngModel)]="user!.address.state">
+                    <label for="senha">Estado</label>
+                </div>
+                <div class="form-floating my-3">
+                    <input type="text" class="form-control" id="cep" placeholder="CEP" name="cep"
+                        [(ngModel)]="user!.address.zip">
+                    <label for="senha">CEP</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-lg-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Resumo do Pedido</h5>
+
+                <table class="table">
+                    <thead>
+                        <tr class="text-center">
+                            <th>Produto</th>
+                            <th>Quantidade</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+
+                    @for (item of cartItens; track $index) {
+                    <tr class="text-center">
+                        <td>{{item.title}}</td>
+                        <td>{{item.quantity}}</td>
+                        <td>{{item.price * item.quantity | currency}}</td>
+                    </tr>
+                    }
+                    <tr class="text-center" if="cartItens.length > 0">
+                        <td></td>
+                        <td class="fw-bold">Total:</td>
+                        <td class="fw-bold">{{getTotal() | currency}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-warning mt-3 d-block w-100 fw-bold" data-bs-toggle="modal" data-bs-target="#exampleModal">Finalizar Compra</button>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" (hidden.bs.modal)="closeModal()">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5 text-center" id="exampleModalLabel">Compra Finalizada</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <i class="fa-solid fa-circle-check mx-auto d-block text-primary fs-1 mb-3"></i>
+        <p class="text-center"><span class="fw-bold">{{user!.name}}</span>, obrigado por comprar conosco!</p>
+
+        <p>O pedido será entregue em:</p>
+        <p class="text-center fw-bold">{{user!.address.street}}, {{user!.address.number}} - {{user!.address.city}} - {{user!.address.state}}</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>

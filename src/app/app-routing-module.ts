@@ -11,16 +11,14 @@ const routes: Routes = [
     path: 'produtos',
     loadChildren: () => import('./modules/products/products-module').then(m => m.ProductsModule),
     canActivate: [authGuard]
-
   },
   {
     path: 'checkout',
-    loadChildren: () => import('./modules/cart/cart-module').then(m => m.CartModule)
-  },
+    loadChildren: () => import('./modules/cart/cart-module').then(m => m.CartModule),
+    canActivate: [authGuard]  },
   { 
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth-module').then(m => m.AuthModule)
-
   }
 ];
 

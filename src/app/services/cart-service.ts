@@ -15,7 +15,7 @@ export class CartService {
 
   constructor(){}
 
-  addItem(product: Product){
+  addItem(product: Product | CartItem){
     this.itemCount.next(this.itemCount.value + 1);
 
     let itens = this.cartItens.value;
@@ -25,23 +25,45 @@ export class CartService {
     if(item){
       item.quantity++;
     } else {
+      let stringImage = '';
+      if('images' in product){
+        stringImage = product.images[0];
+      } 
+
       itens.push({
         id: product.id,
         title: product.title,
         price: product.price,
         quantity: 1,
-        image: product.images[0]
+        image: stringImage
       })
     }
 
     this.cartItens.next([...this.cartItens.value]);
   }
 
-  removeItem(){
+  removeItem(item: CartItem){
     this.itemCount.next(this.itemCount.value - 1);
+
+    let itens = this.cartItens.value;
+
+    let result = itens.find(i => i.id === item.id);
+
+    if(result){
+      result.quantity--;
+
+      if(result.quantity === 0){
+        console.log("yesye")
+        itens = itens.filter(i => i.id !== item.id);
+
+        this.cartItens.next([...itens]);
+      }
+    }
+
   }
 
   clearCart(){
     this.itemCount.next(0);
+    this.cartItens.next([]);
   }
 }
