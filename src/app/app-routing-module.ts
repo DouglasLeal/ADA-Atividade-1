@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { authGuard } from './guards/auth-guard';
+import { Page404 } from './components/page-404/page-404';
 const routes: Routes = [
   {
     path: '',
@@ -19,7 +20,11 @@ const routes: Routes = [
   { 
     path: 'auth',
     loadChildren: () => import('./modules/auth/auth-module').then(m => m.AuthModule)
-  }
+  },
+  {
+    path: '**',
+    component: Page404,
+  },
 ];
 
 @NgModule({

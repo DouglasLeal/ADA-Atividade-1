@@ -14,7 +14,6 @@ export class AuthService {
 
   constructor(private router: Router, private cartService: CartService){}
 
-
   registerUser(user: User){
     const userExists = LocalStorageUtil.getUserByEmail(user.email);
 

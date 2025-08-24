@@ -8,6 +8,7 @@ import { DEFAULT_CURRENCY_CODE, LOCALE_ID } from '@angular/core';
 import { AppRoutingModule } from './app-routing-module';
 import { App } from './app';
 import { Navbar } from './components/navbar/navbar';
+import { Page404 } from './components/page-404/page-404';
 
 
 registerLocaleData(ptBr);
@@ -16,6 +17,7 @@ registerLocaleData(ptBr);
   declarations: [
     App,
     Navbar,
+    Page404,
   ],
   imports: [
     BrowserModule,

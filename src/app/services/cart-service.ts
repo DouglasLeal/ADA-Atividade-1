@@ -53,7 +53,6 @@ export class CartService {
       result.quantity--;
 
       if(result.quantity === 0){
-        console.log("yesye")
         itens = itens.filter(i => i.id !== item.id);
 
         this.cartItens.next([...itens]);
