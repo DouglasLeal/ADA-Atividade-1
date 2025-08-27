@@ -1,3 +1,5 @@
+<a [routerLink]="['/']" class="btn btn-dark mb-2">Voltar</a>
+
 @if(loadingProduct){
 <app-loading></app-loading>
 }@else {
@@ -15,11 +17,13 @@
                 </div>
                 }
             </div>
-            <button class="carousel-control-prev bg-dark" type="button" data-bs-target="#carouselProduct" data-bs-slide="prev">
+            <button class="carousel-control-prev bg-dark" type="button" data-bs-target="#carouselProduct"
+                data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next bg-dark" type="button" data-bs-target="#carouselProduct" data-bs-slide="next">
+            <button class="carousel-control-next bg-dark" type="button" data-bs-target="#carouselProduct"
+                data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
